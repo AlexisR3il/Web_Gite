@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/gite/css/alexis.css">
+    <title>Gîte de Figuies</title>
+</head>
+<body>
+<h1 class="titre">Gîte de Figuies</h1>
+<header>
+    <img src="/gite/image/LOGO-final-fond-transparent.png" alt="Logo" class="logo">
+    <nav>
+        <ul>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="calendrier.html">Calendrier</a></li>
+            <li><a href="carrousel.html">Carrousel</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+    <div class="background-container">
+        <img src="/gite/image/one.jpg" alt="Image 1">
+        <img src="/gite/image/two.jpg" alt="Image 2">
+        <img src="/gite/image/three.jpg" alt="Image 3">
+        <img src="/gite/image/four.jpg" alt="Image 4">
+        <img src="/gite/image/five.jpg" alt="Image 5">
+        <img src="/gite/image/six.jpg" alt="Image 6">
+        <img src="/gite/image/seven.jpg" alt="Image 7">
+    </div>
+    <script src="/gite/js/alexis.js"></script>
+</body>
+</html>
+
+----------------------------------
+
+/* styles.css */
+header {
+    background-color: rgba(51, 51, 51, 0.7);
+    color: #fff;
+    padding: 30px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+h1.titre{
+	text-align: center;
+	color: white;
+	z-index: 2;
+}
+.logo {
+    width: 6%;
+    position: fixed;
+    top: 15px; /* Ajoute une marge de 10px par rapport au bord supérieur */
+    left: 20px; /* Ajoute une marge de 10px par rapport au bord gauche */
+    z-index: 1; /* Pour afficher l'image au-dessus de l'arrière-plan */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    margin-right: 20px;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Styles pour le conteneur d'arrière-plan */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".background-container img");
+    let currentImageIndex = 0;
+
+    function showNextImage() {
+        images[currentImageIndex].style.opacity = "0";
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        images[currentImageIndex].style.opacity = "1";
+    }
+
+    // Afficher la première image
+    images[currentImageIndex].style.opacity = "1";
+
+    // Définir une rotation toutes les 3 secondes (3000 millisecondes)
+    setInterval(showNextImage, 1000);
+});

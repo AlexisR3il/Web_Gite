@@ -1,0 +1,13 @@
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px); /* Soustraction pour l'espace du bandeau fixe */
+  }
+  
+  #map {
+    width: 80%;  /* Définir la largeur en pourcentage pour la rendre responsive */
+    height: 60vh; /* Hauteur basée sur la hauteur de la fenêtre */
+    max-width: 750px; /* Largeur maximale de la carte */
+  }
+  
